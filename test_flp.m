@@ -61,6 +61,13 @@ b = struct('mantissa', [0 0 3 1 8], 'exponent', -7, 'sign', +1);
 c = mul_flp(a,b);
 d = struct('mantissa', [1 3 2 2 2], 'exponent', -3, 'sign', -1);
 assert(isequal(c,d));
+%
+% -2.7345E+3 * -1.0000E-7 = 2.7345E-4
+a = struct('mantissa', [5 4 3 7 2], 'exponent', +3, 'sign', -1);
+b = struct('mantissa', [0 0 0 0 1], 'exponent', -7, 'sign', -1);
+c = mul_flp(a,b);
+d = struct('mantissa', [5 4 3 7 2], 'exponent', -4, 'sign', +1);
+assert(isequal(c,d));
 
 
 
