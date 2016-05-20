@@ -6,9 +6,8 @@ function [a] = cheb_coeff(f_handle,N)
     for n = 0:N
         x_n(n+1) = f_handle(cos(pi*n/N));
     end
-
+    
     x = [x_n fliplr(x_n(2:N))];
     f = real(fft(x));
     a = f(1:N+1)/N;
-    a(2:N) = a(2:N)*2;
 end
