@@ -1,0 +1,15 @@
+function [v] = convergence_rate(n,N)
+%CONVERGENCE_RATE Calculates the rate of convergence for a given degree (n)
+%and a number of points to use in the numerical calculation of a_k (N). 
+
+T = cheb(n);
+f_handle = @(x) (x-1)./(1+6*(x.^2));
+a = cheb_coeff(f_handle,N);
+c = poly(a,T,n);
+
+x = -1:0.01:1;
+plot(x,f_handle(x), x,polyval(fliplr(c),x));
+
+diff
+end
+
