@@ -8,4 +8,3 @@ function [c] = sub_flp(a,b)
     c = add_flp(a,neg_flp(b));
 
 end
-
