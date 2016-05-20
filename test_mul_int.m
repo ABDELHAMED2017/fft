@@ -26,6 +26,13 @@ b = 0;
 c = mul_int(a,b);
 assert(isequal(c, b));
 
+% Absorbing element > No unnecesary zeros.
+% 123 * 0 = 0
+a = [3 2 1];
+b = [0 0];
+c = mul_int(a,b);
+assert(isequal(c, 0));
+
 % Large number test.
 a = fliplr([9 8 9 8 4 5 6 1 6 8 4 1 6 2 1 2]);
 b = fliplr([1 2 1 6 5 8 9 8 4 8 9 4 1 6 5 1 8 9 7 6 5 3 7 6 1 2 9 7 5 9 1 7]);
