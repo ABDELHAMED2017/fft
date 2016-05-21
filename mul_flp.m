@@ -9,11 +9,16 @@ function [c] = mul_flp(a,b)
     c_sign = a.sign * b.sign;
     c_exp = a.exponent + b.exponent;
     prod = mul_int(a.mantissa, b.mantissa);
-    if length(prod) >= 2*N
-        c_exp = c_exp + 1;
+    if prod == 0
+        c_sign = 1;
+        c_exp = 0;
+        c_mant = zeros(1,N);
+    else
+        if length(prod) < 2*N
+            c_exp = c_exp - 1;
+        end
+        c_mant = prod(end-N+1:end);
     end
-    c_mant = prod(end-N+1:end);
-    
     c = struct('mantissa', c_mant, 'exponent', c_exp, 'sign', c_sign);
 
 end
